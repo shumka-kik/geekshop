@@ -15,3 +15,9 @@ def about(request):
 
 def faqs(request):
     return render(request, 'mainapp/faqs.html')
+
+def shoppingcart(request):
+    return render(request, 'mainapp/shoppingcart.html')
+
+def checkout(request):
+    return render(request, 'mainapp/checkout.html')
