@@ -1,0 +1,63 @@
+{% load static %}
+<div id="tooplate_header">
+    <div id="header_top">
+        <div id="site_title"><a href="/">Clothing Template</a></div>
+        <div id="tooplate_menu" class="ddsmoothmenu">
+            <ul>
+                {% for link in links %}
+
+                <li>
+                     {% if request.resolver_match.url_name == link.href %}
+                    <a href="{% url link.href %}" class="selected">{{ link.name }}</a>
+                        {% if link.href == "products" %}
+                        <ul>
+                            {% for category in categories %}
+                            <li><a href="{% url category.href %}">{{ category.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    {% else %}
+                    <a href="{% url link.href %}">{{ link.name }}</a>
+                        {% if link.href == "products" %}
+                        <ul>
+                            {% for category in categories %}
+                            <li><a href="{% url category.href %}">{{ category.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    {% endif %}
+                </li>
+                {% endfor %}
+                    <!--                        <li><a href="{% url 'main' %}" class="selected">Home</a></li>-->
+                    <!--                        <li><a href="{% url 'products' %}">Products</a>-->
+                    <!--                            <ul>-->
+                    <!--                                {% for category in categories %}-->
+                    <!--                                <li><a href="{% url category.href %}">{{ category.name }}</a></li>-->
+                    <!--                                {% endfor %}-->
+                    <!--                            </ul>-->
+                    <!--                        </li>-->
+                    <!--                        <li><a href="{% url 'about' %}">About</a></li>-->
+                    <!--                        <li><a href="{% url 'faqs' %}">FAQs</a></li>-->
+                    <!--                        <li><a href="{% url 'contact' %}" class="last">Contact</a></li>-->
+            </ul>
+            <br style="clear: left"/>
+        </div> <!-- end of tooplate_menu -->
+    </div> <!-- END of header top -->
+
+    <div id="header_bottom">
+        <p>
+            <a href="{% url 'shoppingcart' %}">My Cart</a> |
+            <a href="{% url 'checkout' %}">Check Out</a> |
+            <span>Item in Cart ( 10 )</span>
+        </p>
+
+        <div id="tooplate_search">
+            <form action="#" method="get">
+                <input type="text" value=" " name="keyword" id="keyword" title="keyword" onfocus="clearText(this)"
+                       onblur="clearText(this)" class="txt_field"/>
+                <input type="submit" name="Search" value=" " alt="Search" id="searchbutton" title="Search"
+                       class="sub_btn"/>
+            </form>
+        </div>
+    </div> <!-- END of header bottom -->
+</div> <!-- END of header -->

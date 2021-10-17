@@ -1,123 +1,40 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 {% extends 'mainapp/base.html' %}
 {% load static %}
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 {% block title%}
-    <title>Page FAQs</title>
+{{ title|title }}
 {% endblock %}
-</head>
-<body>
+{% block main%}
+<div id="tooplate_main"><span class="main_border main_border_t"></span><span class="main_border main_border_b"></span>
 
-<div id="tooplate_wrapper">
-	<div id="tooplate_header">
-    	<div id="header_top">
-        	<div id="site_title"><a href="#">Clothing Template</a></div>
-            <div id="tooplate_menu" class="ddsmoothmenu">
-                <ul>
-                    <li><a href=".">Home</a></li>
-                    <li><a href="/products/">Products</a>
-                        <ul>
-                            <li><a href="#">Category One</a></li>
-                            <li><a href="#">Category Two</a></li>
-                            <li><a href="#">Category Three</a></li>
-                            <li><a href="#">Category Four</a></li>
-                            <li><a href="#">Category Five</a></li>
-                      	</ul>
-                    </li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'faqs' %}" class="selected">FAQs</a></li>
-                    <li><a href="{% url 'contact' %}" class="last">Contact</a></li>
-                </ul>
-                <br style="clear: left" />
-            </div> <!-- end of tooplate_menu -->
-        </div> <!-- END of header top -->
-        
-        <div id="header_bottom">
-        	<p>
-            <a href="{% url 'shoppingcart' %}">My Cart</a> | 
-            <a href="{% url 'checkout' %}">Check Out</a> |
-        	<span>Item in Cart ( 10 )</span>
-            </p>
-            
-             <div id="tooplate_search">
-                <form action="#" method="get">
-                  <input type="text" value=" " name="keyword" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
-                  <input type="submit" name="Search" value=" " alt="Search" id="searchbutton" title="Search" class="sub_btn"  />
-                </form>
-            </div>
-        </div> <!-- END of header bottom -->
-    </div> <!-- END of header -->
-    {% block main%}
-    <div id="tooplate_main"><span class="main_border main_border_t"></span><span class="main_border main_border_b"></span>
-    	
-        <div id="content">
-        	<h2>FAQs</h2>
-            <h5>When will my order be confirmed?</h5>
-            <p>You will  receive an email confirmation that your order has been received within an hour. If you do not  receive an email confirmation, please check to see if the email address on your  order was placed correctly.</p>
-            <hr />
-            <h5>When will my order be shipped?</h5>
-            <p>It will take 2 days for shipping. Please read our shipping policy for more information. Click <a href="#">here</a></p>
-            <hr />
-            <h5>What payment methods do you accept?</h5>
-            <p>We accept PayPal and 2Checkout (2CO).</p>
-            <hr />
-            <h5>Can I return or exchange my purchase if I do not like it?</h5>
-            <p>Please read our product return or exchange policies. Click <a href="#">here</a></p>
-            <hr />
-            <h5>What is your privacy policy?</h5>
-            <p>This site respects your privacy and wants to ensure that  you understand what information we need to complete your order, and what  information you can choose to share with us and with our marketing partners.  For complete information on our privacy policy, please visit our <a href="#">Privacy Policy</a>  page.</p>
-            <p>&nbsp;</p>
-            <h5>Thank you for shopping with us!</h5>
-            <p>&nbsp;</p>
-            <div class="cleaner h40"></div>
-        </div> <!-- END of content -->
-        
-        <div id="sidebar">
-        	<div class="sidebar_section sidebar_section_bg">
-                <h3>Popular Products</h3>
-         		<ul class="sidebar_link_list popular_products">
-                    <li>
-                    	<img src="{% static 'img/product/01_xs.jpg' %}" align="image" />
-                    	<span class="title"><a href="#">Donec tincidunt hendrerit</a></span>
-                        <span class="price">$28</span>
-                        <span class="clear"></span>
-					</li>
-                    <li>
-                        <img src="{% static 'img/product/02_xs.jpg' %}" align="image" />
-                        <span class="title"><a href="#">Ut ut felis ut nulla</a></span>
-						<span class="price">$28</span>
-                        <span class="clear"></span>
-					</li>
-                    <li>
-                      	<img src="{% static 'img/product/03_xs.jpg' %}" align="image" />
-                    	<span class="title"><a href="#">Curabitur viverra</a></span>
-						<span class="price">$28</span>
-                        <span class="clear"></span>
-					</li>
-                    <li>
-						<img src="{% static 'img/product/04_xs.jpg' %}" align="image" />
-                    	<span class="title"><a href="#">Nulla pulvinar felis</a></span>
-						<span class="price">$28</span>
-                        <span class="clear"></span>
-					</li>
-                    <li>
-                    	<img src="{% static 'img/product/05_xs.jpg' %}" align="image" />
-                    	<span><a href="#">Pellentesque luctus </a></span>
-						<span class="price">$28</span>
-                        <span class="clear"></span>
-					</li>
-              </ul>
-            </div>
-        </div> <!-- END of sidebar -->
-        
-        
-        
-            
-        <div class="clear"></div>
-    </div> <!-- END of main -->
-    {% endblock %}
-</div> <!-- END of wrapper -->
-</body>
-</html>
+    <div id="content">
+        <h2>FAQs</h2>
+        <h5>When will my order be confirmed?</h5>
+        <p>You will receive an email confirmation that your order has been received within an hour. If you do not
+            receive an email confirmation, please check to see if the email address on your order was placed
+            correctly.</p>
+        <hr/>
+        <h5>When will my order be shipped?</h5>
+        <p>It will take 2 days for shipping. Please read our shipping policy for more information. Click <a href="#">here</a>
+        </p>
+        <hr/>
+        <h5>What payment methods do you accept?</h5>
+        <p>We accept PayPal and 2Checkout (2CO).</p>
+        <hr/>
+        <h5>Can I return or exchange my purchase if I do not like it?</h5>
+        <p>Please read our product return or exchange policies. Click <a href="#">here</a></p>
+        <hr/>
+        <h5>What is your privacy policy?</h5>
+        <p>This site respects your privacy and wants to ensure that you understand what information we need to complete
+            your order, and what information you can choose to share with us and with our marketing partners. For
+            complete information on our privacy policy, please visit our <a href="#">Privacy Policy</a> page.</p>
+        <p>&nbsp;</p>
+        <h5>Thank you for shopping with us!</h5>
+        <p>&nbsp;</p>
+        <div class="cleaner h40"></div>
+    </div> <!-- END of content -->
+
+    {% include 'mainapp/includes/inc_popular_products.html' %}
+
+    <div class="clear"></div>
+</div> <!-- END of main -->
+{% endblock %}

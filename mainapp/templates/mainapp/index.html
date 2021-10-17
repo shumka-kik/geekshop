@@ -1,181 +1,109 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 {% extends 'mainapp/base.html' %}
 {% load static %}
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-            {% block title %}
-                <title>Index Page</title>
-            {% endblock %}
-    </head>
-    <body>
-        <div id="tooplate_wrapper">
-            <div id="tooplate_header">
-                    <div id="header_top">
-                        <div id="site_title"><a href="/">Clothing Template</a></div>
-                        <div id="tooplate_menu" class="ddsmoothmenu">
-                            <ul>
-                                <li><a href="{% url 'main' %}" class="selected">Home</a></li>
-                                <li><a href="{% url 'products' %}">Products</a>
-                                    <ul>
-                                        <li><a href="#">Category One</a></li>
-                                        <li><a href="#">Category Two</a></li>
-                                        <li><a href="#">Category Three</a></li>
-                                        <li><a href="#">Category Four</a></li>
-                                        <li><a href="#">Category Five</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="{% url 'about' %}">About</a></li>
-                                <li><a href="{% url 'faqs' %}">FAQs</a></li>
-                                <li><a href="{% url 'contact' %}" class="last">Contact</a></li>
-                            </ul>
-                            <br style="clear: left" />
-                        </div> <!-- end of tooplate_menu -->
-                    </div> <!-- END of header top -->
+{% block title %}
+{{ title|title }}
+{% endblock %}
+{% block main %}
+<div id="tooplate_slider" class="section_content"><span class="frame"></span>
+    <div id="carousel">
+        <div class="panel">
 
-                    <div id="header_bottom">
-                        <p>
-                        <a href="{% url 'shoppingcart' %}">My Cart</a> |
-                        <a href="{% url 'checkout' %}">Check Out</a> |
-                        <span>Item in Cart ( 10 )</span>
-                        </p>
+            <div class="details_wrapper">
 
-                         <div id="tooplate_search">
-                            <form action="#" method="get">
-                              <input type="text" value=" " name="keyword" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
-                              <input type="submit" name="Search" value=" " alt="Search" id="searchbutton" title="Search" class="sub_btn"  />
-                            </form>
-                        </div>
-                    </div> <!-- END of header bottom -->
-                </div> <!-- END of header -->
-            {% block main %}
-            <div id="tooplate_slider" class="section_content"><span class="frame"></span>
-                <div id="carousel">
-                    <div class="panel">
+                <div class="details">
 
-                        <div class="details_wrapper">
+                    <div class="detail">
+                        <h2>Dolor sit amet</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec orci erat. </p>
+                        <a href="/productdetail/" title="Read more" class="slider_more">Read more</a>
+                    </div><!-- /detail -->
 
-                            <div class="details">
+                    <div class="detail">
+                        <h2>Lorem ipsum dolor</h2>
+                        <p> Donec nec orci vel risus condimentum suscipit dapibus quis justo.</p>
+                        <a href="/productdetail/" title="Read more" class="slider_more">Read more</a>
+                    </div><!-- /detail -->
 
-                                <div class="detail">
-                                    <h2>Dolor sit amet</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec orci erat. </p>
-                                    <a href="/productdetail/" title="Read more" class="slider_more">Read more</a>
-                                </div><!-- /detail -->
+                    <div class="detail">
+                        <h2>Aenean massa cum sociis</h2>
+                        <p> Nam non lectus a nunc fringilla aliquet ac id lectus. </p>
+                        <a href="/productdetail/" title="Read more" class="slider_more">Read more</a>
+                    </div><!-- /detail -->
 
-                                <div class="detail">
-                                    <h2>Lorem ipsum dolor</h2>
-                                    <p> Donec nec orci vel risus condimentum suscipit dapibus quis justo.</p>
-                                    <a href="/productdetail/" title="Read more" class="slider_more">Read more</a>
-                                </div><!-- /detail -->
+                </div><!-- /details -->
 
-                                <div class="detail">
-                                    <h2>Aenean massa cum sociis</h2>
-                                    <p> Nam non lectus a nunc fringilla aliquet ac id lectus. </p>
-                                    <a href="/productdetail/" title="Read more" class="slider_more">Read more</a>
-                                </div><!-- /detail -->
+            </div><!-- /details_wrapper -->
 
-                            </div><!-- /details -->
+        </div><!-- /panel -->
 
-                        </div><!-- /details_wrapper -->
-
-                  </div><!-- /panel -->
-
-                    <a href="javascript:void(0);" class="previous" title="Previous" >Previous</a>
-                    <a href="javascript:void(0);" class="next" title="Next">Next</a>
+        <a href="javascript:void(0);" class="previous" title="Previous">Previous</a>
+        <a href="javascript:void(0);" class="next" title="Next">Next</a>
 
         <div id="slider-image-frame">
-                        <div class="backgrounds">
+            <div class="backgrounds">
 
-                            <div class="item item_1">
-                                <img src="{% static 'img/slider/01.jpg' %}" alt="image" />
-                            </div><!-- /item -->
+                <div class="item item_1">
+                    <img src="{% static 'img/slider/01.jpg' %}" alt="image"/>
+                </div><!-- /item -->
 
-                            <div class="item item_2">
-                                <img src="{% static 'img/slider/02.jpg' %}" alt="image" />
-                            </div><!-- /item -->
+                <div class="item item_2">
+                    <img src="{% static 'img/slider/02.jpg' %}" alt="image"/>
+                </div><!-- /item -->
 
-                            <div class="item item_3">
-                                <img src="{% static 'img/slider/03.jpg' %}" alt="image" />
-                            </div><!-- /item -->
+                <div class="item item_3">
+                    <img src="{% static 'img/slider/03.jpg' %}" alt="image"/>
+                </div><!-- /item -->
 
-                        </div><!-- /backgrounds -->
-                    </div>
-                </div>
-                <div class="clear"></div>
-            </div> <!-- END of slider -->
-            <div id="tooplate_main"><span class="main_border main_border_t"></span><span class="main_border main_border_b"></span>
-                <div class="product">
-                    <h1>New Products</h1>
-                    <div class="product_box">
-                        <div class="img_box"><span></span>
-                            <a href="/productdetail/"><img src="{% static 'img/product/01.jpg' %}" alt="image" /></a>
-                        </div>
-                        <h2><a href="/productdetail/">Product One</a></h2>
-                        <p class="price">$30</p>
-                    </div>
-                    <div class="product_box">
-                        <div class="img_box"><span></span>
-                            <a href="/productdetail/"><img src="{% static 'img/product/02.jpg' %}" alt="image" /></a>
-                      </div>
-                        <h2><a href="/productdetail/">Product One</a></h2>
-                        <p class="price">$30</p>
-                    </div>
-                    <div class="product_box">
-                        <div class="img_box"><span></span>
-                            <a href="/productdetail/"><img src="{%static 'img/product/03.jpg' %}" alt="image" /></a>
-                        </div>
-                        <h2><a href="/productdetail/">Product One</a></h2>
-                        <p class="price">$30</p>
-                    </div>
-                    <div class="product_box">
-                        <div class="img_box"><span></span>
-                            <a href="/productdetail/"><img src="{% static 'img/product/04.jpg' %}" alt="image" /></a>
-                        </div>
-                        <h2><a href="/productdetail/">Product One</a></h2>
-                        <p class="price">$30</p>
-                    </div>
-                </div>
+            </div><!-- /backgrounds -->
+        </div>
+    </div>
+    <div class="clear"></div>
+</div> <!-- END of slider -->
+<div id="tooplate_main"><span class="main_border main_border_t"></span><span class="main_border main_border_b"></span>
+    <div class="product">
+        <h1>New Products</h1>
+        {% for product in products %}
+        <div class="product_box">
+            <div class="img_box"><span></span>
+                <a href="{% url product.href %}"><img src="../static/{{product.src}}" alt="image"/></a>
+            </div>
+            <h2><a href="{% url product.href %}">{{product.name}}</a></h2>
+            <p class="price">${{product.price}}</p>
+        </div>
+        {% endfor %}
+        <!--                    <div class="product_box">-->
+        <!--                        <div class="img_box"><span></span>-->
+        <!--                            <a href="/productdetail/"><img src="{% static 'img/product/02.jpg' %}" alt="image" /></a>-->
+        <!--                      </div>-->
+        <!--                        <h2><a href="/productdetail/">Product One</a></h2>-->
+        <!--                        <p class="price">$30</p>-->
+        <!--                    </div>-->
+    </div>
 
-                <div class="clear h20"></div>
-                <hr />
-                <div class="clear h10"></div>
+    <div class="clear h20"></div>
+    <hr/>
+    <div class="clear h10"></div>
 
-                <div class="product">
-                    <h1>Popular Products</h1>
-                    <div class="product_box">
-                        <div class="img_box"><span></span>
-                            <a href="/productdetail/"><img src="{% static 'img/product/01.jpg' %}" alt="image" /></a>
-                        </div>
-                        <h2><a href="/productdetail/">Product One</a></h2>
-                        <p class="price">$30</p>
-                    </div>
-                    <div class="product_box">
-                        <div class="img_box"><span></span>
-                            <a href="/productdetail/"><img src="{% static 'img/product/02.jpg' %}" alt="image" /></a>
-                        </div>
-                        <h2><a href="productdetail.html">Product One</a></h2>
-                        <p class="price">$30</p>
-                    </div>
-                    <div class="product_box">
-                        <div class="img_box"><span></span>
-                            <a href="/productdetail/"><img src="{% static 'img/product/03.jpg' %}" alt="image" /></a>
-                        </div>
-                        <h2><a href="/productdetail/">Product One</a></h2>
-                        <p class="price">$30</p>
-                    </div>
-                    <div class="product_box">
-                        <div class="img_box"><span></span>
-                            <a href="/productdetail/"><img src="{% static 'img/product/04.jpg' %}" alt="image" /></a>
-                        </div>
-                        <h2><a href="/productdetail/">Product One</a></h2>
-                        <p class="price">$30</p>
-                    </div>
-                </div>
+    <div class="product">
+        <h1>Popular Products</h1>
+        {% for product in products %}
+        <div class="product_box">
+            <div class="img_box"><span></span>
+                <a href="{% url product.href %}"><img src="../static/{{product.src}}" alt="image"/></a>
+            </div>
+            <h2><a href="{% url product.href %}">{{product.name|lower}}</a></h2>
+            <p class="price">${{product.price}}</p>
+        </div>
+        {% endfor %}
+        <!--                    <div class="product_box">-->
+        <!--                        <div class="img_box"><span></span>-->
+        <!--                            <a href="/productdetail/"><img src="{% static 'img/product/02.jpg' %}" alt="image" /></a>-->
+        <!--                        </div>-->
+        <!--                        <h2><a href="productdetail.html">Product One</a></h2>-->
+        <!--                        <p class="price">$30</p>-->
+        <!--                    </div>-->
+    </div>
 
-                <div class="clear"></div>
-            </div> <!-- END of main -->
-            {% endblock %}
-        </div> <!-- END of wrapper -->
-    </body>
-</html>
+    <div class="clear"></div>
+</div> <!-- END of main -->
+{% endblock %}

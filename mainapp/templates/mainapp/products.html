@@ -1,136 +1,40 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 {% extends 'mainapp/base.html' %}
 {% load static %}
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    {% block title %}
-    <title>Products Page</title>
-    {% endblock %}
-</head>
-<body>
+{% block title %}
+{{ title|title }}
+{% endblock %}
+{% block main %}
+<div id="tooplate_main"><span class="main_border main_border_t"></span><span class="main_border main_border_b"></span>
+    <div class="product">
+        <h1>Products</h1>
+        {% for product in products %}
+        <div class="product_box">
+            <div class="img_box"><span></span>
+                <a href="{% url product.href %}"><img src="../static/{{product.src}}" alt="image"/></a>
+            </div>
+            <h2><a href="{% url product.href %}">{{product.name}}</a></h2>
+            <p class="price">${{product.price}}</p>
+        </div>
+        {% endfor %}
+    </div>
 
-<div id="tooplate_wrapper">
-	<div id="tooplate_header">
-    	<div id="header_top">
-        	<div id="site_title"><a href="#">Clothing Template</a></div>
-            <div id="tooplate_menu" class="ddsmoothmenu">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/products/" class="selected">Products</a>
-                        <ul>
-                            <li><a href="#">Category One</a></li>
-                            <li><a href="#">Category Two</a></li>
-                            <li><a href="#">Category Three</a></li>
-                            <li><a href="#">Category Four</a></li>
-                            <li><a href="#">Category Five</a></li>
-                      	</ul>
-                    </li>
-                    <li><a href="/about/">About</a></li>
-                    <li><a href="/faqs/">FAQs</a></li>
-                    <li><a href="/contact/" class="last">Contact</a></li>
-                </ul>
-                <br style="clear: left" />
-            </div> <!-- end of tooplate_menu -->
-        </div> <!-- END of header top -->
-        
-        <div id="header_bottom">
-        	<p>
-            <a href="/shoppingcart/">My Cart</a> |
-            <a href="/checkout/">Check Out</a> |
-        	<span>Item in Cart ( 10 )</span>
-            </p>
-            
-             <div id="tooplate_search">
-                <form action="#" method="get">
-                  <input type="text" value=" " name="keyword" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
-                  <input type="submit" name="Search" value=" " alt="Search" id="searchbutton" title="Search" class="sub_btn"  />
-                </form>
-            </div>
-        </div> <!-- END of header bottom -->
-    </div> <!-- END of header -->
-    {% block main%}
-    <div id="tooplate_main"><span class="main_border main_border_t"></span><span class="main_border main_border_b"></span>
-    	<div class="product">
-        	<h1>Products</h1>
-            <div class="product_box">
-            	<div class="img_box"><span></span>
-	                <a href="/productdetail/"><img src="../static/img/product/01.jpg" alt="image" /></a>
-				</div>
-                <h2><a href="/productdetail/">Product One</a></h2>
-                <p class="price">$30</p>
-            </div>
-            <div class="product_box">
-               	<div class="img_box"><span></span>
-	                <a href="/productdetail/"><img src="../static/img/product/02.jpg" alt="image" /></a>
-			  </div>
-                <h2><a href="/productdetail/">Product One</a></h2>
-                <p class="price">$30</p>
-            </div>
-            <div class="product_box">
-                <div class="img_box"><span></span>
-	                <a href="/productdetail/"><img src="../static/img/product/03.jpg" alt="image" /></a>
-				</div>
-                <h2><a href="/productdetail/">Product One</a></h2>
-                <p class="price">$30</p>
-            </div>
-            <div class="product_box">
-                <div class="img_box"><span></span>
-	                <a href="/productdetail/"><img src="../static/img/product/04.jpg" alt="image" /></a>
-				</div>
-                <h2><a href="/productdetail/">Product One</a></h2>
-                <p class="price">$30</p>
-            </div>
-            <div class="product_box">
-            	<div class="img_box"><span></span>
-	                <a href="/productdetail/"><img src="../static/img/product/01.jpg" alt="image" /></a>
-				</div>
-                <h2><a href="/productdetail/">Product One</a></h2>
-                <p class="price">$30</p>
-            </div>
-            <div class="product_box">
-               	<div class="img_box"><span></span>
-	                <a href="/productdetail/"><img src="../static/img/product/02.jpg" alt="image" /></a>
-			  </div>
-                <h2><a href="/productdetail/">Product One</a></h2>
-                <p class="price">$30</p>
-            </div>
-            <div class="product_box">
-                <div class="img_box"><span></span>
-	                <a href="/productdetail/"><img src="../static/img/product/03.jpg" alt="image" /></a>
-				</div>
-                <h2><a href="/productdetail/">Product One</a></h2>
-                <p class="price">$30</p>
-            </div>
-            <div class="product_box">
-                <div class="img_box"><span></span>
-	                <a href="/productdetail/"><img src="../static/img/product/04.jpg" alt="image" /></a>
-				</div>
-                <h2><a href="/productdetail/">Product One</a></h2>
-                <p class="price">$30</p>
-            </div>
-		</div>
-        
-        <hr />
-        
-        <div class="pagging">
-            <ul>
-                <li><a href="#" target="_parent">Previous</a></li>
-                <li><a href="#1" target="_parent">1</a></li>
-                <li><a href="#2" target="_parent">2</a></li>
-                <li><a href="#3" target="_parent">3</a></li>
-                <li><a href="#4" target="_parent">4</a></li>
-                <li><a href="#5" target="_parent">5</a></li>
-                <li><a href="#6" target="_parent">6</a></li>
-                <li><a href="#" target="_parent">Next</a></li>
-            </ul>
-            <div class="clear"></div>
-        </div>       
-        
-            
+    <hr/>
+
+    <div class="pagging">
+        <ul>
+            <li><a href="#" target="_parent">Previous</a></li>
+            <li><a href="#1" target="_parent">1</a></li>
+            <li><a href="#2" target="_parent">2</a></li>
+            <li><a href="#3" target="_parent">3</a></li>
+            <li><a href="#4" target="_parent">4</a></li>
+            <li><a href="#5" target="_parent">5</a></li>
+            <li><a href="#6" target="_parent">6</a></li>
+            <li><a href="#" target="_parent">Next</a></li>
+        </ul>
         <div class="clear"></div>
-    </div> <!-- END of main -->
-    {% endblock %}
-</div> <!-- END of wrapper -->
-</body>
-</html>
+    </div>
+
+
+    <div class="clear"></div>
+</div> <!-- END of main -->
+{% endblock %}
