@@ -23,9 +23,9 @@
             {% for product in products %}
 
             <tr>
-                <td><a href="{% url product.href %}"><img src="../static/{{ product.src }}" alt="image"/></a></td>
-                <td><a href="{% url product.href %}">{{ product.name|upper }}</a></td>
-                <td align="center"><input type="text" value="{{ product.quantity }}"
+                <td><a href="{{ product.image.url }}"><img src="/media/{{ product.image }}" alt="image" height="70px"/></a></td>
+                <td><a href="{{ product.image.url }}">{{ product.name|upper }}</a></td>
+                <td align="center"><input type="text" value="1"
                                           style="width: 20px; text-align: right"/></td>
                 <td align="right">${{ product.price }}</td>
                 <td align="right">${% multiply product.quantity product.price %}</td>

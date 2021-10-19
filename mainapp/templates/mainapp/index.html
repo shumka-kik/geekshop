@@ -65,19 +65,13 @@
         {% for product in products %}
         <div class="product_box">
             <div class="img_box"><span></span>
-                <a href="{% url product.href %}"><img src="../static/{{product.src}}" alt="image"/></a>
+                <a href="{{ product.image.url }}"><img src="/media/{{ product.image }}" alt="{{ product.short.desc }}"
+                                                       height="148px" width="160px"/></a>
             </div>
-            <h2><a href="{% url product.href %}">{{product.name}}</a></h2>
-            <p class="price">${{product.price}}</p>
+            <h2><a href="#">{{ product.name }}</a></h2>
+            <p class="price">${{ product.price }}</p>
         </div>
         {% endfor %}
-        <!--                    <div class="product_box">-->
-        <!--                        <div class="img_box"><span></span>-->
-        <!--                            <a href="/productdetail/"><img src="{% static 'img/product/02.jpg' %}" alt="image" /></a>-->
-        <!--                      </div>-->
-        <!--                        <h2><a href="/productdetail/">Product One</a></h2>-->
-        <!--                        <p class="price">$30</p>-->
-        <!--                    </div>-->
     </div>
 
     <div class="clear h20"></div>
@@ -89,19 +83,12 @@
         {% for product in products %}
         <div class="product_box">
             <div class="img_box"><span></span>
-                <a href="{% url product.href %}"><img src="../static/{{product.src}}" alt="image"/></a>
+                <a href="#"><img src="{{ product.image.url }}" alt="image" height="148px" width="160px"/></a>
             </div>
-            <h2><a href="{% url product.href %}">{{product.name|lower}}</a></h2>
-            <p class="price">${{product.price}}</p>
+            <h2><a href="#">{{ product.name|lower }}</a></h2>
+            <p class="price">${{ product.price }}</p>
         </div>
         {% endfor %}
-        <!--                    <div class="product_box">-->
-        <!--                        <div class="img_box"><span></span>-->
-        <!--                            <a href="/productdetail/"><img src="{% static 'img/product/02.jpg' %}" alt="image" /></a>-->
-        <!--                        </div>-->
-        <!--                        <h2><a href="productdetail.html">Product One</a></h2>-->
-        <!--                        <p class="price">$30</p>-->
-        <!--                    </div>-->
     </div>
 
     <div class="clear"></div>

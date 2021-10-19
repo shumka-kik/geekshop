@@ -10,10 +10,10 @@
         {% for product in products %}
         <div class="product_box">
             <div class="img_box"><span></span>
-                <a href="{% url product.href %}"><img src="../static/{{product.src}}" alt="image"/></a>
+                <a href="{{ product.image.url }}"><img src="/media/{{ product.image }}" alt="{{ product.short_desc}}" height="148px" width="170px"/></a>
             </div>
-            <h2><a href="{% url product.href %}">{{product.name}}</a></h2>
-            <p class="price">${{product.price}}</p>
+            <h2><a href="{{ product.image.url }}">{{ product.name }}</a></h2>
+            <p class="price">${{ product.price }}</p>
         </div>
         {% endfor %}
     </div>

@@ -5,8 +5,8 @@
             <ul class="sidebar_link_list popular_products">
                 {% for product in products %}
                 <li>
-                    <img src="../static/{{ product.src }}" align="image" height="40px"/>
-                    <span class="title"><a href="{{ product.href}}">{{ product.name|upper }}</a></span>
+                    <img src="/media/{{ product.image }}" align="{{ product.short_desc}}" height="40px"/>
+                    <span class="title"><a href="{{ product.image.url}}">{{ product.name|upper }}</a></span>
                     <span class="price">${{ product.price }}</span>
                     <span class="clear"></span>
                 </li>

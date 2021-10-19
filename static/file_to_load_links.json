@@ -1,7 +1,7 @@
 [
-	{"href":"main", "name": "Home"},
-    {"href":"products", "name": "Products"},
-    {"href":"about", "name": "About"},
+	{"href":"main", "name": "Главная"},
+    {"href":"products:index", "name": "Продукция"},
+    {"href":"about", "name": "О нас"},
     {"href":"faqs", "name": "FAQs"},
-    {"href":"contact", "name": "Contact"}
+    {"href":"contact", "name": "Контакты"}
 ]

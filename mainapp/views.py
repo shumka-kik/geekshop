@@ -1,14 +1,17 @@
 from django.shortcuts import render
 import json
+from .models import Product, ProductCategory
 
 
 # Create your views here.
 def main(request):
-    with open('static/file_to_load.json') as file:
-        data_product = json.load(file)
+    # with open('static/file_to_load.json') as file:
+    #     data_product = json.load(file)
+    data_product = Product.objects.all()
 
-    with open('static/file_to_load_categories.json') as file:
-        data_category = json.load(file)
+    # with open('static/file_to_load_categories.json') as file:
+    #     data_category = json.load(file)
+    data_category = ProductCategory.objects.all()
 
     with open('static/file_to_load_links.json') as file:
         data_links = json.load(file)
@@ -22,12 +25,15 @@ def main(request):
     return render(request, 'mainapp/index.html', context=content)
 
 
-def products(request):
-    with open('static/file_to_load.json') as file:
-        data_product = json.load(file)
+def products(request, pk=None):
 
-    with open('static/file_to_load_categories.json') as file:
-        data_category = json.load(file)
+    # with open('static/file_to_load.json') as file:
+    #     data_product = json.load(file)
+    data_product = Product.objects.all()
+
+    # with open('static/file_to_load_categories.json') as file:
+    #     data_category = json.load(file)
+    data_category = ProductCategory.objects.all()
 
     with open('static/file_to_load_links.json') as file:
         data_links = json.load(file)
@@ -42,33 +48,41 @@ def products(request):
 
 
 def contact(request):
+    data_category = ProductCategory.objects.all()
     with open('static/file_to_load_links.json') as file:
         data_links = json.load(file)
 
     content = {
         'title': 'Contact',
-        'links': data_links
+        'links': data_links,
+        'categories': data_category,
+
     }
     return render(request, 'mainapp/contact.html', context=content)
 
 
 def about(request):
+    data_category = ProductCategory.objects.all()
     with open('static/file_to_load_links.json') as file:
         data_links = json.load(file)
 
     content = {
         'title': 'About',
-        'links': data_links
+        'links': data_links,
+        'categories': data_category,
+
     }
     return render(request, 'mainapp/about.html', context=content)
 
 
 def faqs(request):
-    with open('static/file_to_load.json') as file:
-        data_product = json.load(file)
+    # with open('static/file_to_load.json') as file:
+    #     data_product = json.load(file)
+    data_product = Product.objects.all()
 
-    with open('static/file_to_load_categories.json') as file:
-        data_category = json.load(file)
+    # with open('static/file_to_load_categories.json') as file:
+    #     data_category = json.load(file)
+    data_category = ProductCategory.objects.all()
 
     with open('static/file_to_load_links.json') as file:
         data_links = json.load(file)
@@ -83,11 +97,13 @@ def faqs(request):
 
 
 def shoppingcart(request):
-    with open('static/file_to_load.json') as file:
-        data_product = json.load(file)
+    # with open('static/file_to_load.json') as file:
+    #     data_product = json.load(file)
+    data_product = Product.objects.all()
 
-    with open('static/file_to_load_categories.json') as file:
-        data_category = json.load(file)
+    # with open('static/file_to_load_categories.json') as file:
+    #     data_category = json.load(file)
+    data_category = ProductCategory.objects.all()
 
     with open('static/file_to_load_links.json') as file:
         data_links = json.load(file)
@@ -102,11 +118,13 @@ def shoppingcart(request):
 
 
 def checkout(request):
+    data_category = ProductCategory.objects.all()
     with open('static/file_to_load_links.json') as file:
         data_links = json.load(file)
 
     content = {
         'title': 'Checkout',
-        'links': data_links
+        'links': data_links,
+        'categories': data_category,
     }
     return render(request, 'mainapp/checkout.html', content)
