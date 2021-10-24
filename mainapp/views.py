@@ -29,10 +29,17 @@ def products(request, pk=None):
 
     # with open('static/file_to_load.json') as file:
     #     data_product = json.load(file)
-    data_product = Product.objects.all()
+
+    # Если в урле задан идентификатор категории, то необходимо фильтрануть товары по категории,
+    # иначе выводим все товары
+    if pk != None:
+        data_product = Product.objects.filter(category=ProductCategory.objects.get(id=pk))
+    else:
+        data_product = Product.objects.all()
 
     # with open('static/file_to_load_categories.json') as file:
     #     data_category = json.load(file)
+
     data_category = ProductCategory.objects.all()
 
     with open('static/file_to_load_links.json') as file:
