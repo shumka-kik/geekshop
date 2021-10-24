@@ -29,6 +29,7 @@ urlpatterns = [
     path('shoppingcart/', mainapp.shoppingcart, name='shoppingcart'),
     path('checkout', mainapp.checkout, name='checkout'),
     path('admin/', admin.site.urls),
+    path('auth/', include('authapp.urls', namespace='auth'))
 ]
 
 if settings.DEBUG:
