@@ -1,12 +1,12 @@
 {% load static %}
 <div id="sidebar">
         <div class="sidebar_section sidebar_section_bg">
-            <h3>Popular Products</h3>
+            <h3>Популярные товары</h3>
             <ul class="sidebar_link_list popular_products">
                 {% for product in products %}
                 <li>
                     <img src="/media/{{ product.image }}" align="{{ product.short_desc}}" height="40px"/>
-                    <span class="title"><a href="{{ product.image.url}}">{{ product.name|upper }}</a></span>
+                    <span class="title"><a href="{% url 'products:productdetail' product.id %}">{{ product.name|upper }}</a></span>
                     <span class="price">${{ product.price }}</span>
                     <span class="clear"></span>
                 </li>

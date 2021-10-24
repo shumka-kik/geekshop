@@ -26,7 +26,6 @@ def main(request):
 
 
 def products(request, pk=None):
-
     # with open('static/file_to_load.json') as file:
     #     data_product = json.load(file)
 
@@ -52,6 +51,25 @@ def products(request, pk=None):
         'links': data_links
     }
     return render(request, 'mainapp/products.html', context=content)
+
+
+def productdetail(request, pk):
+    product = Product.objects.get(id=pk)
+
+    with open('static/file_to_load_links.json') as file:
+        data_links = json.load(file)
+
+    data_category = ProductCategory.objects.all()
+    data_product = Product.objects.all()
+    content = {
+        'title': 'ProductDetail',
+        'product': product,
+        'recommend_products': data_product,
+        'categories': data_category,
+        'links': data_links
+    }
+
+    return render(request, 'mainapp/productdetail.html', context=content)
 
 
 def contact(request):

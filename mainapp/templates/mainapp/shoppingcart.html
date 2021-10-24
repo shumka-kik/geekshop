@@ -8,28 +8,28 @@
 <div id="tooplate_main"><span class="main_border main_border_t"></span><span class="main_border main_border_b"></span>
 
     <div id="content">
-        <h1>Items in Cart</h1>
+        <h1>Товары в корзине</h1>
 
         <table width="580px" cols="0" cellspacing="0" cellpadding="5">
             <tr bgcolor="#ddd">
-                <th width="220" align="left">Image</th>
-                <th width="180" align="left">Description</th>
-                <th width="100" align="center">Quantity</th>
-                <th width="60" align="right">Price</th>
-                <th width="60" align="right">Total</th>
+                <th width="220" align="left">Изображение</th>
+                <th width="180" align="left">Название</th>
+                <th width="100" align="center">Кол-во</th>
+                <th width="60" align="right">Цена</th>
+                <th width="60" align="right">Сумма</th>
                 <th width="90"></th>
 
             </tr>
             {% for product in products %}
 
             <tr>
-                <td><a href="{{ product.image.url }}"><img src="/media/{{ product.image }}" alt="image" height="70px"/></a></td>
-                <td><a href="{{ product.image.url }}">{{ product.name|upper }}</a></td>
+                <td><a href="{% url 'products:productdetail' product.id %}"><img src="/media/{{ product.image }}" alt="{{product.name}}" height="70px"/></a></td>
+                <td><a href="{% url 'products:productdetail' product.id %}">{{ product.name|upper }}</a></td>
                 <td align="center"><input type="text" value="1"
                                           style="width: 20px; text-align: right"/></td>
                 <td align="right">${{ product.price }}</td>
                 <td align="right">${% multiply product.quantity product.price %}</td>
-                <td align="center"><a href="#"><img src="{% static 'img/remove.png' %}" alt="remove"/><br/>Remove</a>
+                <td align="center"><a href="#"><img src="{% static 'img/remove.png' %}" alt="remove"/><br/>Удалить</a>
                 </td>
             </tr>
             {% endfor %}
@@ -40,7 +40,7 @@
                             href="{% url 'shoppingcart' %}"><strong>Update</strong></a>&nbsp;&nbsp;
                 </td>
                 <td align="right" style="background: url({% static 'img/tooplate_h2.png' %}) repeat; font-weight:bold">
-                    Total
+                    Сумма корзины
                 </td>
                 <td align="right" style="background: url({% static 'img/tooplate_h2.png' %}) repeat; font-weight:bold">
                     $140

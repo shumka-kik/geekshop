@@ -98,6 +98,11 @@ ul.list_bullet li a:hover { color: #4a545a }
 #tooplate_slider { position: relative; padding: 0; margin: 0 30px 20px; width: 900px; height: 290px; }
 #tooplate_slider span.frame { position: absolute; z-index: 100; width: 900px; height: 290px; top: 0; left: 0; background: url(../img/tooplate_slider_frame.png) no-repeat }
 
+#tooplate_slider #slider-image-frame .backgrounds .item img {
+    width:inherit;
+    height:inherit;
+}
+
 #tooplate_main {
 	padding: 30px 15px;
 	position: relative;
@@ -211,6 +216,11 @@ ul.list_bullet li a:hover { color: #4a545a }
 	margin-bottom: 15px;
 	position: relative;
 }
+
+.product .product_box .img_box img{
+	width: 160px;
+	height: 148px;
+}
 .product .product_box .img_box span {
 	position: absolute;
 	width: 170px;
@@ -253,6 +263,14 @@ ul.list_bullet li a:hover { color: #4a545a }
 	width: 405px;
 	padding: 14px;
 	border: 1px solid #ccc
+}
+
+#tooplate_main .product .product_preview a img{
+	width: 400px;
+}
+
+#tooplate_main .product .product_preview .nobullet img{
+	width: 50px;
 }
 
 #tooplate_main .product .product_preview ul {
