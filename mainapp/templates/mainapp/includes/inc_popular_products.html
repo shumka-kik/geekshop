@@ -3,7 +3,7 @@
         <div class="sidebar_section sidebar_section_bg">
             <h3>Популярные товары</h3>
             <ul class="sidebar_link_list popular_products">
-                {% for product in products %}
+                {% for product in popular_product %}
                 <li>
                     <img src="/media/{{ product.image }}" align="{{ product.short_desc}}" height="40px"/>
                     <span class="title"><a href="{% url 'products:productdetail' product.id %}">{{ product.name|upper }}</a></span>

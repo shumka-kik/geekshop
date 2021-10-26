@@ -26,10 +26,11 @@ urlpatterns = [
     path('contact/', mainapp.contact, name='contact'),
     path('about/', mainapp.about, name='about'),
     path('faqs/', mainapp.faqs, name='faqs'),
-    path('shoppingcart/', mainapp.shoppingcart, name='shoppingcart'),
+    # path('shoppingcart/', mainapp.shoppingcart, name='shoppingcart'),
+    path('basket/', include('basketapp.urls', namespace='basket')),
     path('checkout', mainapp.checkout, name='checkout'),
     path('admin/', admin.site.urls),
-    path('auth/', include('authapp.urls', namespace='auth'))
+    path('auth/', include('authapp.urls', namespace='auth')),
 ]
 
 if settings.DEBUG:

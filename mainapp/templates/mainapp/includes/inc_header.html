@@ -8,12 +8,14 @@
                         selected
                       {% endif %}">Главная</a></li>
                 <li>
-                    <a href="{% url 'products:index' %}" class="{% if request.resolver_match.url_name == 'index' or request.resolver_match.url_name == 'category' %}
-                        selected
-                      {% endif %}">Продукция</a>
+                    <a href="{% url 'products:index' %}" class="{% if request.resolver_match.namespace == 'products' %}
+              selected
+            {% endif %}">Продукция</a>
                     <ul>
                         {% for category in categories %}
-                        <li><a href="{% url 'products:category' category.id %}">{{ category.name }}</a></li>
+                        <li><a href="{% url 'products:category' category.id %}" class="{% if category.name == current_category.name %}
+              selected
+            {% endif %}">{{ category.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </li>
@@ -43,9 +45,9 @@
 
     <div id="header_bottom">
         <p>
-            <a href="{% url 'shoppingcart' %}">Корзина</a> |
+            <a href="{% url 'basket:view' %}">Корзина</a> |
             <a href="{% url 'checkout' %}">Купить</a> |
-            <span>Товаров в корзине ( 10 )</span>
+            <span>Товаров в корзине ( {{count_basket_products}} )</span>
         </p>
 
         <div id="tooplate_search">

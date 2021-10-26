@@ -6,7 +6,7 @@
 {% block main %}
 <div id="tooplate_main"><span class="main_border main_border_t"></span><span class="main_border main_border_b"></span>
     <div class="product">
-        <h1>Товары</h1>
+        <h1>{{current_category.name}}</h1>
         {% for product in products %}
         <div class="product_box">
             <div class="img_box"><span></span>
