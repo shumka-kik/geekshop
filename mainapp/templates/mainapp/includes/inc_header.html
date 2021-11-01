@@ -47,7 +47,14 @@
         <p>
             <a href="{% url 'basket:view' %}">Корзина</a> |
             <a href="{% url 'checkout' %}">Купить</a> |
-            <span>Товаров в корзине ( {{count_basket_products}} )</span>
+            <span>Товаров в корзине (
+                {% if basket %}
+                    {{ basket.0.total_quantity }}
+                {% endif %}
+                )</span>
+                {% if basket %}
+                <span> на сумму:{{ basket.0.total_cost|floatformat:0 }} руб.</span>
+                {% endif %}
         </p>
 
         <div id="tooplate_search">

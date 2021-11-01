@@ -136,3 +136,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Это необходимо, чтобы Django вместо модели User использовал в приложении аутентификации нашу модель.
 AUTH_USER_MODEL = 'authapp.ShopUser'
+
+LOGIN_URL = '/auth/login/'

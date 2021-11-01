@@ -5,13 +5,19 @@ from basketapp.models import Basket
 from .models import Product, ProductCategory
 
 
-# Create your views here.
+def get_basket(user):
+    if user.is_authenticated:
+        return Basket.objects.filter(user=user)
+    else:
+        return []
+
+
 def main(request):
     # with open('static/file_to_load.json') as file:
     #     data_product = json.load(file)
     new_product = Product.objects.all().order_by('id')[:4]
     popular_product = Product.objects.all().order_by('-price')[:4]
-    count_basket_products = get_count_products_in_basket(request)
+    basket = get_basket(request.user)
 
     # with open('static/file_to_load_categories.json') as file:
     #     data_category = json.load(file)
@@ -25,14 +31,14 @@ def main(request):
         'new_products': new_product,
         'popular_product': popular_product,
         'categories': data_category,
-        'count_basket_products':count_basket_products,
+        'basket': basket,
         'links': data_links
     }
     return render(request, 'mainapp/index.html', context=content)
 
 
 def products(request, pk=None):
-    count_basket_products = get_count_products_in_basket(request)
+    basket = get_basket(request.user)
 
     # Если в урле задан идентификатор категории, то необходимо фильтрануть товары по категории,
     # иначе выводим все товары
@@ -57,14 +63,14 @@ def products(request, pk=None):
         'products': data_product,
         'categories': data_category,
         'current_category': current_category,
-        'count_basket_products': count_basket_products,
+        'basket': basket,
         'links': data_links
     }
     return render(request, 'mainapp/products.html', context=content)
 
 
 def productdetail(request, id):
-    count_basket_products = get_count_products_in_basket(request)
+    basket = get_basket(request.user)
 
     with open('static/file_to_load_links.json') as file:
         data_links = json.load(file)
@@ -80,7 +86,7 @@ def productdetail(request, id):
                 'products': data_product,
                 'categories': data_category,
                 'current_category': current_category,
-                'count_basket_products': count_basket_products,
+                'basket': basket,
                 'links': data_links
             }
             return render(request, 'mainapp/products.html', context=content)
@@ -97,7 +103,7 @@ def productdetail(request, id):
             'products': data_product,
             'categories': data_category,
             'current_category': current_category,
-            'count_basket_products': count_basket_products,
+            'basket': basket,
             'links': data_links
         }
         return render(request, 'mainapp/products.html', context=content)
@@ -105,7 +111,7 @@ def productdetail(request, id):
     data_category = ProductCategory.objects.all()
 
     # В качестве рекоммендуемых берем простова товары из той же категории что и просматриваемый товар
-    recommend_products = Product.objects.filter(category__pk=product.category.pk)
+    recommend_products = Product.objects.filter(category__pk=product.category.pk).exclude(pk=product.pk)
 
     content = {
         'title': 'ProductDetail',
@@ -113,7 +119,7 @@ def productdetail(request, id):
         'recommend_products': recommend_products,
         'categories': data_category,
         'current_category': current_category,
-        'count_basket_products': count_basket_products,
+        'basket': basket,
         'links': data_links
     }
 
@@ -122,7 +128,7 @@ def productdetail(request, id):
 
 def contact(request):
     data_category = ProductCategory.objects.all()
-    count_basket_products = get_count_products_in_basket(request)
+    basket = get_basket(request.user)
 
     with open('static/file_to_load_links.json') as file:
         data_links = json.load(file)
@@ -131,13 +137,13 @@ def contact(request):
         'title': 'Contact',
         'links': data_links,
         'categories': data_category,
-        'count_basket_products': count_basket_products,
+        'basket': basket,
     }
     return render(request, 'mainapp/contact.html', context=content)
 
 
 def about(request):
-    count_basket_products = get_count_products_in_basket(request)
+    basket = get_basket(request.user)
 
     data_category = ProductCategory.objects.all()
     with open('static/file_to_load_links.json') as file:
@@ -147,7 +153,7 @@ def about(request):
         'title': 'About',
         'links': data_links,
         'categories': data_category,
-        'count_basket_products': count_basket_products,
+        'basket': basket,
     }
     return render(request, 'mainapp/about.html', context=content)
 
@@ -157,7 +163,7 @@ def faqs(request):
     #     data_product = json.load(file)
     popular_product = Product.objects.all().order_by('-price')[:4]
     data_category = ProductCategory.objects.all()
-    count_basket_products = get_count_products_in_basket(request)
+    basket = get_basket(request.user)
 
     with open('static/file_to_load_links.json') as file:
         data_links = json.load(file)
@@ -167,7 +173,7 @@ def faqs(request):
         'popular_product': popular_product,
         'categories': data_category,
         'links': data_links,
-        'count_basket_products': count_basket_products,
+        'basket': basket,
     }
     return render(request, 'mainapp/faqs.html', context=content)
 
@@ -177,7 +183,7 @@ def shoppingcart(request):
     #     data_product = json.load(file)
     data_product = Product.objects.all()
     popular_product = Product.objects.all().order_by('-price')[:4]
-    count_basket_products = get_count_products_in_basket(request)
+    basket = get_basket(request.user)
 
     # with open('static/file_to_load_categories.json') as file:
     #     data_category = json.load(file)
@@ -192,13 +198,13 @@ def shoppingcart(request):
         'popular_product': popular_product,
         'categories': data_category,
         'links': data_links,
-        'count_basket_products': count_basket_products,
+        'basket': basket,
     }
     return render(request, 'mainapp/shoppingcart.html', context=content)
 
 
 def checkout(request):
-    count_basket_products = get_count_products_in_basket(request)
+    basket = get_basket(request.user)
     data_category = ProductCategory.objects.all()
     with open('static/file_to_load_links.json') as file:
         data_links = json.load(file)
@@ -207,15 +213,6 @@ def checkout(request):
         'title': 'Checkout',
         'links': data_links,
         'categories': data_category,
-        'count_basket_products': count_basket_products,
+        'basket': basket,
     }
     return render(request, 'mainapp/checkout.html', content)
-
-def get_count_products_in_basket(request):
-    # Товары в корзине, отображаем количество в хэдере
-    count_basket_products = 0
-
-    if request.user.is_authenticated:
-        count_basket_products = len(Basket.objects.filter(user=request.user))
-
-    return count_basket_products
