@@ -21,7 +21,7 @@ def main(request):
 
     # with open('static/file_to_load_categories.json') as file:
     #     data_category = json.load(file)
-    data_category = ProductCategory.objects.all()
+    data_category = ProductCategory.objects.filter(is_active=True)
 
     with open('static/file_to_load_links.json') as file:
         data_links = json.load(file)
@@ -53,7 +53,7 @@ def products(request, pk=None):
         data_product = Product.objects.all().order_by('price')
         current_category = {'name': 'Все игрушки'}
 
-    data_category = ProductCategory.objects.all()
+    data_category = ProductCategory.objects.filter(is_active=True)
 
     with open('static/file_to_load_links.json') as file:
         data_links = json.load(file)
@@ -77,7 +77,7 @@ def productdetail(request, id):
 
     if id is not None or id == 0:
         if id == 0:
-            data_category = ProductCategory.objects.all()
+            data_category = ProductCategory.objects.filter(is_active=True)
             data_product = Product.objects.all()
             current_category = {'name': 'Все игрушки'}
 
@@ -94,7 +94,7 @@ def productdetail(request, id):
             product = get_object_or_404(Product, pk=id)
             current_category = product.category.name
     else:
-        data_category = ProductCategory.objects.all()
+        data_category = ProductCategory.objects.filter(is_active=True)
         data_product = Product.objects.all()
         current_category = {'name': 'Все игрушки'}
 
@@ -108,7 +108,7 @@ def productdetail(request, id):
         }
         return render(request, 'mainapp/products.html', context=content)
 
-    data_category = ProductCategory.objects.all()
+    data_category = ProductCategory.objects.filter(is_active=True)
 
     # В качестве рекоммендуемых берем простова товары из той же категории что и просматриваемый товар
     recommend_products = Product.objects.filter(category__pk=product.category.pk).exclude(pk=product.pk)
@@ -127,7 +127,7 @@ def productdetail(request, id):
 
 
 def contact(request):
-    data_category = ProductCategory.objects.all()
+    data_category = ProductCategory.objects.filter(is_active=True)
     basket = get_basket(request.user)
 
     with open('static/file_to_load_links.json') as file:
@@ -145,7 +145,7 @@ def contact(request):
 def about(request):
     basket = get_basket(request.user)
 
-    data_category = ProductCategory.objects.all()
+    data_category = ProductCategory.objects.filter(is_active=True)
     with open('static/file_to_load_links.json') as file:
         data_links = json.load(file)
 
@@ -162,7 +162,7 @@ def faqs(request):
     # with open('static/file_to_load.json') as file:
     #     data_product = json.load(file)
     popular_product = Product.objects.all().order_by('-price')[:4]
-    data_category = ProductCategory.objects.all()
+    data_category = ProductCategory.objects.filter(is_active=True)
     basket = get_basket(request.user)
 
     with open('static/file_to_load_links.json') as file:
@@ -187,7 +187,7 @@ def shoppingcart(request):
 
     # with open('static/file_to_load_categories.json') as file:
     #     data_category = json.load(file)
-    data_category = ProductCategory.objects.all()
+    data_category = ProductCategory.objects.filter(is_active=True)
 
     with open('static/file_to_load_links.json') as file:
         data_links = json.load(file)
@@ -205,7 +205,7 @@ def shoppingcart(request):
 
 def checkout(request):
     basket = get_basket(request.user)
-    data_category = ProductCategory.objects.all()
+    data_category = ProductCategory.objects.filter(is_active=True)
     with open('static/file_to_load_links.json') as file:
         data_links = json.load(file)
 

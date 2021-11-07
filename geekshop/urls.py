@@ -29,8 +29,9 @@ urlpatterns = [
     # path('shoppingcart/', mainapp.shoppingcart, name='shoppingcart'),
     path('basket/', include('basketapp.urls', namespace='basket')),
     path('checkout', mainapp.checkout, name='checkout'),
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('auth/', include('authapp.urls', namespace='auth')),
+    path('admin/', include('adminapp.urls', namespace='admin')),
 ]
 
 if settings.DEBUG:

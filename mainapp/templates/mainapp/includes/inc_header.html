@@ -22,12 +22,15 @@
                 <li><a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}
                         selected
                       {% endif %}">О нас</a></li>
-                <li><a href="{% url 'faqs' %}" class="{% if request.resolver_match.url_name == 'faqs' %}
-                        selected
-                      {% endif %}">FAQs</a></li>
+<!--                <li><a href="{% url 'faqs' %}" class="{% if request.resolver_match.url_name == 'faqs' %}-->
+<!--                        selected-->
+<!--                      {% endif %}">FAQs</a></li>-->
                 <li><a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}
                         selected
                       {% endif %}">Контакты</a></li>
+                {% if user.is_superuser %}
+                <li><a href="{% url 'adminapp:users' %}">Админка</a></li>
+                {% endif %}
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'auth:edit' %}">{{ user.first_name|default:'Юзер' }}</a></li>
                 {% endif %}
