@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, get_object_or_404
 import json
 
@@ -37,30 +38,44 @@ def main(request):
     return render(request, 'mainapp/index.html', context=content)
 
 
-def products(request, pk=None):
+def products(request, pk=None, page=1):
     basket = get_basket(request.user)
 
     # Если в урле задан идентификатор категории, то необходимо фильтрануть товары по категории,
     # иначе выводим все товары
     if pk is not None:
         if pk == 0:
-            data_product = Product.objects.all().order_by('price')
-            current_category = {'name': 'Все игрушки'}
+            data_product = Product.objects.filter(is_active=True, category__is_active=True).order_by('price')
+            current_category = {'name': 'Все игрушки',
+                                'pk': 0}
         else:
             current_category = get_object_or_404(ProductCategory, pk=pk)
-            data_product = Product.objects.filter(category__pk=pk)
+            data_product = Product.objects.filter(category__pk=pk, is_active=True, category__is_active=True).order_by('price')
+            # data_product = Product.objects.all()
     else:
-        data_product = Product.objects.all().order_by('price')
-        current_category = {'name': 'Все игрушки'}
+        data_product = Product.objects.filter(is_active=True, category__is_active=True).order_by('price')
+        current_category = {'name': 'Все игрушки',
+                            'pk': 0}
 
     data_category = ProductCategory.objects.filter(is_active=True)
 
     with open('static/file_to_load_links.json') as file:
         data_links = json.load(file)
 
+    paginator = Paginator(data_product, 1)
+    try:
+        products_paginator = paginator.page(page)
+    except PageNotAnInteger:
+        products_paginator = paginator.page(1)
+    except EmptyPage:
+        products_paginator = paginator.page(paginator.num_pages)
+
+    page_range = paginator.get_elided_page_range(number=page)
+    print(data_product)
     content = {
         'title': 'Products',
-        'products': data_product,
+        'products': products_paginator,
+        'page_range': page_range,
         'categories': data_category,
         'current_category': current_category,
         'basket': basket,

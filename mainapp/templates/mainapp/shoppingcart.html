@@ -23,7 +23,7 @@
             {% for product in products %}
 
             <tr>
-                <td><a href="{% url 'products:productdetail' product.id %}"><img src="/media/{{ product.image }}" alt="{{product.name}}" height="70px"/></a></td>
+                <td><a href="{% url 'products:productdetail' product.id %}"><img src="{{ product.image|media_folder_products }}" alt="{{product.name}}" height="70px"/></a></td>
                 <td><a href="{% url 'products:productdetail' product.id %}">{{ product.name|upper }}</a></td>
                 <td align="center"><input type="text" value="1"
                                           style="width: 20px; text-align: right"/></td>

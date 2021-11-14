@@ -8,7 +8,7 @@
                         selected
                       {% endif %}">Главная</a></li>
                 <li>
-                    <a href="{% url 'products:index' %}" class="{% if request.resolver_match.namespace == 'products' %}
+                    <a href="{% url 'products:category' 0 %}" class="{% if request.resolver_match.namespace == 'products' %}
               selected
             {% endif %}">Продукция</a>
                     <ul>

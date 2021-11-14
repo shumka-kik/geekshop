@@ -3,7 +3,7 @@
 
 {% block content %}
   <div class="products_list">
-      <a href="{% url 'adminapp:product_create'%}">
+      <a href="{% url 'adminapp:product_create' category.pk %}">
         новый продукт
       </a>
       <br>
@@ -20,6 +20,9 @@
           {{ object.name|title }}
         </div>
         <div class="product_actions">
+            <a href="{% url 'adminapp:product_read' object.pk %}" class="btn btn-primary">
+              подробнее
+            </a>
             <a href="{% url 'adminapp:product_update' object.pk %}" class="btn btn-warning">
               редактировать
             </a>

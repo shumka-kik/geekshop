@@ -1,5 +1,6 @@
 {% load mainapp_extras %}
 {% load static %}
+{% load my_tags %}
 
 <h1>Товары в корзине</h1>
 
@@ -16,7 +17,7 @@
     {% for basket in basket_products %}
 
     <tr>
-        <td><a href="{% url 'products:productdetail' basket.product.id %}"><img src="/media/{{ basket.product.image }}"
+        <td><a href="{% url 'products:productdetail' basket.product.id %}"><img src="{{ basket.product.image|media_folder_products }}"
                                                                                 alt="{{basket.product.name}}"
                                                                                 height="70px"/></a></td>
         <td><a href="{% url 'products:productdetail' basket.product.id %}">{{ basket.product.name|upper }}</a></td>

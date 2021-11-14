@@ -1,5 +1,6 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
+{% load my_tags %}
 {% block title %}
 {{ title|title }}
 {% endblock %}
@@ -8,12 +9,12 @@
 
     <div class="product">
         <div class="col col_2 product_preview">
-            <a rel="lightbox" href="/media/{{ product.image.url }}"><img src="/media/{{product.image}}"
+            <a rel="lightbox" href="/media/{{ product.image.url }}"><img src="{{product.image|media_folder_products}}"
                                                                          class="left" alt="{{product.name}}" /></a>
             <ul class="nobullet">
-                <li><a rel="lightbox" href="/media/{{product.image.url}}"><img src="/media/{{product.image}}"
+                <li><a rel="lightbox" href="/media/{{product.image.url}}"><img src="{{product.image|media_folder_products}}"
                                                                                  class="right" alt="{{product.name}}"/></a></li>
-                <li><a rel="lightbox" href="/media/{{product.image.url}}"><img src="/media/{{product.image}}"
+                <li><a rel="lightbox" href="/media/{{product.image.url}}"><img src="{{product.image|media_folder_products}}"
                                                                                  class="right" alt="{{product.name}}"/></a></li>
             </ul>
             <div class="clear"></div>
@@ -28,9 +29,6 @@
             <p class="add_to_cart">На складе: <strong>{{product.quantity}}</strong></p>
             <a href="{% url 'basket:add' product.id %}" class="button left">Добавить в корзину</a>
         </div>
-        <div class="">
-        </div>
-
         <div class="clear"></div>
     </div>
 
